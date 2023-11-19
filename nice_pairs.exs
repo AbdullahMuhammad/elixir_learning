@@ -32,9 +32,9 @@ defmodule NicePairs do
    diff_list  = do_count_nice_pairs(nums, [])
    pairs_map = create_pair_map(diff_list, %{})
    num_of_nice_pairs = Enum.reduce(pairs_map, 0, fn {_key, value}, acc ->
-    acc + div(value * (value - 1), 2) |> rem(1_000_000_000)
+    acc + div(value * (value - 1), 2) |> rem(1_000_000_007)
    end)
-   trunc(num_of_nice_pairs |> rem(1_000_000_000))
+   trunc(num_of_nice_pairs |> rem(1_000_000_007))
   end
 
   defp create_pair_map([], p_map), do: p_map
