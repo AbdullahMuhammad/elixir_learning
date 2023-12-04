@@ -70,4 +70,23 @@ defmodule NicePairs do
     String.to_integer(r_str)
   end
 
+
+
+
+end
+
+# Added Sensei's code.
+defmodule NicePairsRevamped do
+  def count_nice_pairs(nums) do
+    nums
+    |> Enum.map(&(&1 - rev(&1)))
+    |> Enum.reduce(%{}, fn key, map -> Map.update(map, key, 1, &(&1+1)) end)
+    |> Enum.reduce(0, fn {_key, value}, acc -> acc + div(value * (value - 1), 2) |> rem(1_000_000_007) end)
+    |> rem(1_000_000_007)
+    |> trunc()
+  end
+
+  defp rev(num) do
+    num |> Integer.to_string() |> String.reverse() |> String.to_integer()
+  end
 end
